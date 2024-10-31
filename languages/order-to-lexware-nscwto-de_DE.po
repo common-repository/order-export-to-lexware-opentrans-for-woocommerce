@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. ['settings_page_configs']['page_title']
+msgid "Export Order as openTrans - Lexware"
+msgstr "Bestellexport - openTrans / Lexware"
+
+#. ['settings_page_configs']['menu_title']
+msgid "Order Export"
+msgstr "Bestellexport"
+
+#. tab::general -> tabname
+msgid "Manuel Export"
+msgstr "Manueller Export"
+
+#. tab::general -> tab_description
+msgid "You can download by exact order number OR start order number OR order date. If you put in more then one field, it will use the first filled field and ignore the below ones."
+msgstr ""
+"Man kann hier entweder eine Bestellnummer eingeben ODER ein Bestelldatum. Es geht immer nur eins. Wenn man eine Bestellnummer UND ein Bestelldatum eingibt, dann ignoriert er das Datum und "
+"exportiert ab der Bestellnummer."
+
+#. tab::general -> save_button_text
+msgid "Export Order"
+msgstr "Exportieren"
+
+#. tab::download -> field::order_numbers_list -> helpertext
+msgid "Define the order numbers you want to export. You can provide a comma seperated list. This will export exact the specified orders."
+msgstr "Hier kann eine kommaseparierte Liste eingetragen werden. Es werden nur die Bestellungen exportiert, die hier eingetragen werden."
+
+#. tab::download -> field::order_numbers_list -> field name
+msgid "Ordernumbers to export"
+msgstr "Bestellnummern für den Export"
+
+#. tab::general -> field::start_ordernummer -> helpertext
+msgid "Define an order number from which you wish to export all orders. The number you add here will be included in the export. This will export all orders with ids >= the specified number."
+msgstr "Die Bestellnummer, von der an alle Bestellungen exportiert werden. Die Nummer, die hier eingetragen ist, ist im Export inkludiert."
+
+#. tab::general -> field::start_ordernummer -> field name
+msgid "From ordernumber (inclusive)"
+msgstr "Ab Bestellnummer (inklusive)"
+
+#. tab::general -> field::start_date -> helpertext
+msgid "Define an order date from which you wish to export all orders. The date you put here will be included in the export. This will export all orders with order date >= the specified date."
+msgstr "Das Bestelldatum, von dem an alle Bestellungen exportiert werden sollen. Das Datum, das hier eingetragen ist, ist im Export inkludiert."
+
+#. tab::general -> field::start_date -> field name
+msgid "From date (inclusive)"
+msgstr "Ab Datum (inklusive)"
+
+#. tab::download -> field::export_only_new_orders -> helpertext
+msgid "Get the premium addon for setting this feature."
+msgstr "Hol dir das premium addon, um dieses Feature zu aktivieren."
+
+#. tab::download -> field::export_only_new_orders -> field name
+msgid "Export only not exported orders"
+msgstr "Nur neue Bestellungen exportieren"
+
+#. tab::shipping-cost -> tabname
+msgid "Shipping Cost"
+msgstr "Versandkosten"
+
+#. tab::shipping-cost -> tab_description
+msgid "If you need to export the shipping cost as well, you can enable it here. The shipping cost can be exported as item."
+msgstr "Hier kann man konfigurieren, dass die Versandkosten als Bestellposition exportiert werden. Es ist möglich für verschiedene Versandkosten verschiedene Bestellnummern zu konfigurieren."
+
+#. tab::shipping-cost -> field::shipping_cost_as_item -> helpertext
+msgid "Get the premium addon for exporting shipping costs as item and map an sku to them."
+msgstr "Hol dir das premium addon um versandkosten als Bestellposition zu exportieren."
+
+#. tab::shipping-cost -> field::shipping_cost_as_item -> field name
+msgid "Export shipping cost as item"
+msgstr "Versandkosten als Bestellposition"
+
+#. tab::shipping-cost -> field::shipping_cost_to_sku_mapping -> field name
+msgid "Cost to sku mapping"
+msgstr "Kosten zu SKU mapping"

@@ -1,0 +1,322 @@
+{
+  "plugin_slug": "woo-order-export-to-lexware-nscwto",
+  "plugin_name": "Woo Order Export to Lexware (opentrans)",
+  "plugin_prefix": "nscwto_",
+  "plugin_suffix": "_nscwto",
+  "settings_page_configs": {
+    "page_title": "Export Order as openTrans - Lexware",
+    "menu_title": "Order Export",
+    "capability": "view_woocommerce_reports",
+    "description": ""
+  },
+  "setting_page_fields": {
+    "active_tab_slug": "",
+    "active_tab_index": 0,
+    "tabs": [
+      {
+        "tabname": "Manuel Export",
+        "tab_description": "You can download by exact order number OR start order number OR order date. If you put in more then one field, it will use the first filled field and ignore the below ones.",
+        "tab_tipps": "",
+        "tab_slug": "download",
+        "button_save_text": "Export Order",
+        "button_position": "bottom",
+        "active": true,
+        "tabfields": [
+          {
+            "field_slug": "order_numbers_list",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "integer",
+            "pre_selected_value": "",
+            "helpertext": "Define the order numbers you want to export. You can provide a comma seperated list. This will export exact the specified orders.",
+            "name": "Ordernumbers to export",
+            "disabled": false,
+            "save_in_db": false
+          },
+          {
+            "field_slug": "start_ordernummer",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "integer",
+            "pre_selected_value": "",
+            "helpertext": "Define an order number from which you wish to export all orders. The number you add here will be included in the export. This will export all orders with ids >= the specified number.",
+            "name": "From ordernumber (inclusive)",
+            "disabled": false,
+            "save_in_db": false
+          },
+          {
+            "field_slug": "start_date",
+            "type": "date",
+            "save_as": "string",
+            "required": false,
+            "pre_selected_value": true,
+            "extra_validation_name": false,
+            "helpertext": "Define an order date from which you wish to export all orders. The date you put here will be included in the export. This will export all orders with order date >= the specified date.",
+            "name": "From date (inclusive)",
+            "disabled": false,
+            "save_in_db": false
+          },
+          {
+            "field_slug": "export_only_new_orders",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Get the premium addon for setting this feature.",
+            "name": "Export only not exported orders",
+            "disabled": true,
+            "save_in_db": true
+          }
+        ]
+      },
+      {
+        "tabname": "Automated export",
+        "tab_description": "If you want to automate the export.",
+        "tab_tipps": "",
+        "tab_slug": "automation",
+        "button_save_text": null,
+        "button_position": "top",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "check_interval",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "disabled", "name": "disabled" },
+              { "value": "1min", "name": "every Minute" },
+              {
+                "value": "5min",
+                "name": "every 5 min."
+              },
+              {
+                "value": "15min",
+                "name": "every 15 min."
+              },
+              {
+                "value": "hourly",
+                "name": "every 60 min."
+              },
+              {
+                "value": "daily",
+                "name": "once a day"
+              }
+            ],
+            "extra_validation_name": "check_interval",
+            "pre_selected_value": "disabled",
+            "helpertext": "Get the premium addon to set the interval to check for orders eligable for export. This uses the wp_cron.",
+            "name": "Interval to check for orders",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "send_method",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [{ "value": "email", "name": "per E-Mail" }],
+            "extra_validation_name": false,
+            "pre_selected_value": "email",
+            "helpertext": "Get the premium addon for sending every order per mail.",
+            "name": "Send Method",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "mail_for_order",
+            "type": "longtext",
+            "save_as": "string",
+            "required": true,
+            "extra_validation_name": false,
+            "pre_selected_value": "",
+            "helpertext": "",
+            "name": "E-Mail recipient for orders",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "start_order_id",
+            "type": "text",
+            "save_as": "string",
+            "required": true,
+            "extra_validation_name": false,
+            "pre_selected_value": "0",
+            "helpertext": "",
+            "name": "OrderIds to start export",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "one_email_per_order_file",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Get the premium addon for setting this feature.",
+            "name": "Only one order file per E-Mail",
+            "disabled": true,
+            "save_in_db": true
+          }
+        ]
+      },
+      {
+        "tabname": "Settings",
+        "tab_description": "These settings are used for the automated and the manual export.",
+        "tab_tipps": "",
+        "tab_slug": "settings-general",
+        "button_save_text": null,
+        "button_position": "top",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "export_file_type",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "opentransV1", "name": "OpenTrans v1" },
+              { "value": "opentransV2", "name": "OpenTrans v2.1" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "opentransV1",
+            "helpertext": "Get the premium addon for being able to switch to OpenTrans v2.1.",
+            "name": "Export File",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "name_tag_value",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "first_name", "name": "First Name" },
+              { "value": "last_name", "name": "Last Name" },
+              { "value": "company", "name": "Company" },
+              {
+                "value": "companyAndFirstLastIfNoCompany",
+                "name": "Company, if no company first and last name"
+              },
+              { "value": "empty", "name": "Leave empty" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "company",
+            "helpertext": "Get the premium addon to configure this.",
+            "name": "Value for tag <NAME/>",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "name2_tag_value",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "first_name", "name": "First Name" },
+              { "value": "last_name", "name": "Last Name" },
+              { "value": "company", "name": "Company" },
+              {
+                "value": "companyAndFirstLastIfNoCompany",
+                "name": "Company, if no company first and last name"
+              },
+              { "value": "empty", "name": "Leave empty" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "last_name",
+            "helpertext": "Get the premium addon to configure this.",
+            "name": "Value for tag <NAME2/>",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "name3_tag_value",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "first_name", "name": "First Name" },
+              { "value": "last_name", "name": "Last Name" },
+              { "value": "company", "name": "Company" },
+              {
+                "value": "companyAndFirstLastIfNoCompany",
+                "name": "Company, if no company first and last name"
+              },
+              { "value": "empty", "name": "Leave empty" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "first_name",
+            "helpertext": "Get the premium addon to configure this.",
+            "name": "Value for tag <NAME3/>",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "empty_shipping_address_equal_billing",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Get the premium addon to override an empty shipping address with a billing address.",
+            "name": "Empty Shipping = Billing",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "order_status_to_export",
+            "type": "multiselect",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [],
+            "extra_validation_name": false,
+            "pre_selected_value": [""],
+            "helpertext": "Get the premium addon to only export ordes with a specific order status.",
+            "name": "Export with status",
+            "disabled": true,
+            "save_in_db": true
+          }
+        ]
+      },
+      {
+        "tabname": "Shipping Cost",
+        "tab_description": "If you need to export the shipping cost as well, you can enable it here. The shipping cost can be exported as item.",
+        "tab_tipps": "",
+        "tab_slug": "shipping-cost",
+        "button_save_text": null,
+        "button_position": "top",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "shipping_cost_as_item",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Get the premium addon for exporting shipping costs as item and map an sku to them.",
+            "name": "Export shipping cost as item",
+            "disabled": true,
+            "save_in_db": true
+          },
+          {
+            "field_slug": "shipping_cost_to_sku_mapping",
+            "type": "hidden",
+            "save_as": "array",
+            "required": true,
+            "extra_validation_name": false,
+            "pre_selected_value": "",
+            "helpertext": "",
+            "name": "Cost to sku mapping",
+            "disabled": false,
+            "save_in_db": true
+          }
+        ]
+      }
+    ]
+  }
+}
